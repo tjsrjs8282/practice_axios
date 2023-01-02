@@ -1,31 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import { useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import AxiosUse from "./pages/AxiosUse";
+import FetchUse from "./pages/fetchUse";
 
 function App() {
-  const [todoTitle, setTodoTitle] = useState([]);
-  const todosData = async (name) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/`);
-    const todo = await response.json();
-    setTodoTitle(todo);
-  };
-
-  useEffect(() => {
-    todosData();
-  }, []);
-
   return (
     <div className="App">
-      <ul>
-        {todoTitle.map((item) => {
-          return (
-            <li>
-              <h2>{item.title}</h2>
-            </li>
-          );
-        })}
-      </ul>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/fetchUse" element={<FetchUse />}></Route>
+          <Route path="/axiosUse" element={<AxiosUse />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
