@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <Link to="/fetch">Fetch</Link>
+      <Link to="/fetchUse">Fetch</Link>
       <br />
       <Link to="/axiosUse">Axios</Link>
     </div>

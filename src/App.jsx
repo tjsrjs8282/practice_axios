@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AxiosUse from "./pages/AxiosUse";
-import FetchUse from "./pages/fetchUse";
+import FetchUse from "./pages/FetchUse";
 
 function App() {
   return (

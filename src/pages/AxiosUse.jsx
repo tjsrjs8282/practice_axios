@@ -1,16 +1,21 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const AxiosUse = () => {
   const [todoTitle, setTodoTitle] = useState([]);
-  const todosData = async (name) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/`);
-    const todo = await response.json();
-    setTodoTitle(todo);
-  };
+  function todoApi() {
+    const url = "https://jsonplaceholder.typicode.com/todos/";
+
+    axios
+      .get(url)
+      .then((res) => setTodoTitle(res.data))
+      .catch((error) => {
+        console.log("데이터를 불러오지 못했습니다");
+      });
+  }
 
   useEffect(() => {
-    todosData();
+    todoApi();
   }, []);
 
   return (
@@ -18,7 +23,7 @@ const AxiosUse = () => {
       <ul>
         {todoTitle.map((item) => {
           return (
-            <li>
+            <li key={item.id}>
               <h2>{item.title}</h2>
             </li>
           );
